@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{532D102C-EA6A-4B57-9715-C2BC8A89A0A0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EnterpriseArchitecture.WEB</RootNamespace>
+    <AssemblyName>EnterpriseArchitecture.WEB</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44328</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
+    <Compile Include="Controllers\PublicController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.bundle.js" />
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.esm.js" />
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.esm.min.js" />
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.js" />
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.min.js" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-grid.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-grid.min.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-grid.rtl.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-grid.rtl.min.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-reboot.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-reboot.min.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-reboot.rtl.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-utilities.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-utilities.min.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-utilities.rtl.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap.min.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap.rtl.css" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap.rtl.min.css" />
+    <Content Include="Assets\External\FontAwesome\css\font-awesome.css" />
+    <Content Include="Assets\External\FontAwesome\css\font-awesome.min.css" />
+    <Content Include="Assets\External\FontAwesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\External\FontAwesome\README.txt" />
+    <None Include="Assets\External\jQuery\jquery-3.6.0-vsdoc.js" />
+    <Content Include="Assets\External\jQuery\jquery-3.6.0.js" />
+    <Content Include="Assets\External\jQuery\jquery-3.6.0.min.js" />
+    <Content Include="Assets\External\jQuery\jquery-3.6.0.slim.js" />
+    <Content Include="Assets\External\jQuery\jquery-3.6.0.slim.min.js" />
+    <None Include="Assets\External\jQuery\jquery.validate-vsdoc.js" />
+    <Content Include="Assets\External\jQuery\jquery.validate.bootstrap.js" />
+    <Content Include="Assets\External\jQuery\jquery.validate.js" />
+    <Content Include="Assets\External\jQuery\jquery.validate.min.js" />
+    <Content Include="Assets\External\jQuery\jquery.validate.unobtrusive.bootstrap.js" />
+    <Content Include="Assets\External\jQuery\jquery.validate.unobtrusive.bootstrap.min.js" />
+    <Content Include="Assets\External\Modernizr\modernizr-2.8.3.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\keymap\emacs.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\keymap\vim.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\codemirror.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\codemirror.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\closetag.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\continuecomment.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\continuelist.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\dialog.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\dialog.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\foldcode.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\formatting.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\javascript-hint.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\loadmode.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\match-highlighter.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\multiplex.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\overlay.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\pig-hint.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\runmode-standalone.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\runmode.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\search.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\searchcursor.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\simple-hint.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\simple-hint.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\lib\util\xml-hint.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\clike\clike.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\clojure\clojure.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\coffeescript\coffeescript.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\commonlisp\commonlisp.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\css\css.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\css\test.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\diff\diff.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\ecl\ecl.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\erlang\erlang.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\gfm\gfm.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\gfm\test.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\go\go.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\groovy\groovy.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\haskell\haskell.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\haxe\haxe.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\htmlembedded\htmlembedded.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\htmlmixed\htmlmixed.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\http\http.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\javascript\javascript.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\jinja2\jinja2.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\less\less.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\lua\lua.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\markdown\markdown.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\markdown\test.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\mysql\mysql.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\ntriples\ntriples.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\ocaml\ocaml.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\pascal\pascal.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\perl\perl.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\php\php.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\pig\pig.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\plsql\plsql.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\properties\properties.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\python\LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\python\python.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\rpm\changes\changes.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\rpm\spec\spec.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\rpm\spec\spec.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\rst\rst.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\ruby\ruby.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\rust\rust.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\r\r.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\scheme\scheme.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\shell\shell.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\sieve\sieve.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\smalltalk\smalltalk.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\smarty\smarty.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\sparql\sparql.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\sql\sql.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\stex\stex.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\stex\test.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\tiddlywiki\tiddlywiki.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\tiddlywiki\tiddlywiki.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\tiki\tiki.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\tiki\tiki.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\vbscript\vbscript.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\vb\LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\vb\vb.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\velocity\velocity.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\verilog\verilog.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\xml\xml.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\xquery\test\testBase.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\xquery\test\testEmptySequenceKeyword.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\xquery\test\testMultiAttr.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\xquery\test\testNamespaces.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\xquery\test\testProcessingInstructions.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\xquery\test\testQuotes.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\xquery\xquery.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\yaml\yaml.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\z80\z80.js" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\ambiance-mobile.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\ambiance.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\blackboard.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\cobalt.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\eclipse.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\elegant.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\erlang-dark.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\lesser-dark.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\monokai.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\neat.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\night.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\rubyblue.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\twilight.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\vibrant-ink.css" />
+    <Content Include="Assets\External\Plugins\CodeMirror\theme\xq-dark.css" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ar-AR.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ar-AR.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ar-AR.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-az-AZ.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-az-AZ.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-az-AZ.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-bg-BG.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-bg-BG.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-bg-BG.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ca-ES.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ca-ES.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ca-ES.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-cs-CZ.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-cs-CZ.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-cs-CZ.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-da-DK.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-da-DK.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-da-DK.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-de-DE.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-de-DE.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-de-DE.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-el-GR.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-el-GR.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-el-GR.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-es-ES.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-es-ES.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-es-ES.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-es-EU.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-es-EU.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-es-EU.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-fa-IR.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-fa-IR.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-fa-IR.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-fi-FI.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-fi-FI.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-fi-FI.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-fr-FR.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-fr-FR.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-fr-FR.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-gl-ES.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-gl-ES.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-gl-ES.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-he-IL.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-he-IL.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-he-IL.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-hr-HR.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-hr-HR.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-hr-HR.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-hu-HU.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-hu-HU.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-hu-HU.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-id-ID.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-id-ID.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-id-ID.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-it-IT.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-it-IT.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-it-IT.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ja-JP.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ja-JP.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ja-JP.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ko-KR.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ko-KR.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ko-KR.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-lt-LT.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-lt-LT.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-lt-LT.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-lt-LV.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-lt-LV.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-lt-LV.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-mn-MN.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-mn-MN.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-mn-MN.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-nb-NO.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-nb-NO.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-nb-NO.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-nl-NL.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-nl-NL.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-nl-NL.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-pl-PL.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-pl-PL.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-pl-PL.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-pt-BR.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-pt-BR.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-pt-BR.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-pt-PT.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-pt-PT.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-pt-PT.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ro-RO.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ro-RO.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ro-RO.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ru-RU.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ru-RU.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ru-RU.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sk-SK.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sk-SK.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sk-SK.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sl-SI.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sl-SI.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sl-SI.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sr-RS-Latin.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sr-RS-Latin.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sr-RS.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sr-RS.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sr-RS.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sv-SE.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sv-SE.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-sv-SE.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ta-IN.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ta-IN.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-ta-IN.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-th-TH.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-th-TH.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-th-TH.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-tr-TR.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-tr-TR.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-tr-TR.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-uk-UA.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-uk-UA.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-uk-UA.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-uz-UZ.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-uz-UZ.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-uz-UZ.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-vi-VN.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-vi-VN.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-vi-VN.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-zh-CN.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-zh-CN.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-zh-CN.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-zh-TW.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-zh-TW.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\lang\summernote-zh-TW.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\plugin\databasic\summernote-ext-databasic.css" />
+    <Content Include="Assets\External\Plugins\SummerNote\plugin\databasic\summernote-ext-databasic.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\plugin\hello\summernote-ext-hello.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\plugin\specialchars\summernote-ext-specialchars.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-bs4.css" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-bs4.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-bs4.min.css" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-bs4.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-bs4.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-lite.css" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-lite.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-lite.min.css" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-lite.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-lite.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote.css" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote.min.css" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote.min.js" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote.min.js.LICENSE.txt" />
+    <Content Include="Assets\External\Plugins\Toastr\Scripts\toastr.js" />
+    <Content Include="Assets\External\Plugins\Toastr\Scripts\toastr.min.js" />
+    <Content Include="Assets\External\Plugins\Toastr\Styles\toastr.css" />
+    <Content Include="Assets\External\Plugins\Toastr\Styles\toastr.min.css" />
+    <Content Include="Assets\Internal\Custom\Scripts\Utility.js" />
+    <Content Include="Assets\Internal\Custom\Styles\Admin.css" />
+    <Content Include="Assets\Internal\Custom\Styles\Component.css" />
+    <Content Include="Assets\Internal\Custom\Styles\Home.css" />
+    <Content Include="Assets\Internal\Custom\Styles\Login.css" />
+    <Content Include="Assets\Internal\Custom\Styles\Post.css" />
+    <Content Include="Assets\Internal\Custom\Styles\Profile.css" />
+    <Content Include="Assets\Internal\Custom\Styles\Site.css" />
+    <Content Include="Assets\Internal\Images\avatar-2x.png" />
+    <Content Include="Assets\Internal\Images\avatar-3x.png" />
+    <Content Include="Assets\Internal\Images\avatar.png" />
+    <Content Include="Assets\Internal\Images\profile.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="README.md" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\Test.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Shared\_SiteLayout.cshtml" />
+    <Content Include="Views\Site\Index.cshtml" />
+    <Content Include="Views\Site\PostList.cshtml" />
+    <Content Include="Views\Site\PostDetail.cshtml" />
+    <Content Include="Views\Shared\PostMore.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntepriseArchitecture.Data\EnterpriseArchitecture.Data.csproj">
+      <Project>{ca0f48a1-e02d-4ec7-b6c8-4dc9440c101e}</Project>
+      <Name>EnterpriseArchitecture.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseArchitecture.Core\EnterpriseArchitecture.Core.csproj">
+      <Project>{b6b03911-e72a-4c1c-a998-409514afb07a}</Project>
+      <Name>EnterpriseArchitecture.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseArchitecture.DTO\EnterpriseArchitecture.DTO.csproj">
+      <Project>{b80dd13f-98b7-499e-8337-7c0894b77bf9}</Project>
+      <Name>EnterpriseArchitecture.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseArchitecture.IOC\EnterpriseArchitecture.IOC.csproj">
+      <Project>{7bdfdbf6-e178-470b-9ab4-b8f4ccb97fb4}</Project>
+      <Name>EnterpriseArchitecture.IOC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseArchitecture.Services\EnterpriseArchitecture.Services.csproj">
+      <Project>{7f0088b5-89c8-4fe1-92e3-611293c45cf2}</Project>
+      <Name>EnterpriseArchitecture.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseArchitecture.Utilities\EnterpriseArchitecture.Utilities.csproj">
+      <Project>{a1b1cc85-c31e-4170-81cd-31796376cd5a}</Project>
+      <Name>EnterpriseArchitecture.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.esm.js.map" />
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.js.map" />
+    <Content Include="Assets\External\Bootstrap\Scripts\bootstrap.min.js.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-grid.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-grid.min.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-grid.rtl.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-reboot.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-reboot.min.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-utilities.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-utilities.min.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap.min.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap.rtl.css.map" />
+    <Content Include="Assets\External\Bootstrap\Styles\bootstrap.rtl.min.css.map" />
+    <Content Include="Assets\External\FontAwesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\External\FontAwesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\External\FontAwesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\External\FontAwesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\External\FontAwesome\fonts\FontAwesome.otf" />
+    <Content Include="Assets\External\FontAwesome\less\animated.less" />
+    <Content Include="Assets\External\FontAwesome\less\bordered-pulled.less" />
+    <Content Include="Assets\External\FontAwesome\less\core.less" />
+    <Content Include="Assets\External\FontAwesome\less\fixed-width.less" />
+    <Content Include="Assets\External\FontAwesome\less\font-awesome.less" />
+    <Content Include="Assets\External\FontAwesome\less\icons.less" />
+    <Content Include="Assets\External\FontAwesome\less\larger.less" />
+    <Content Include="Assets\External\FontAwesome\less\list.less" />
+    <Content Include="Assets\External\FontAwesome\less\mixins.less" />
+    <Content Include="Assets\External\FontAwesome\less\path.less" />
+    <Content Include="Assets\External\FontAwesome\less\rotated-flipped.less" />
+    <Content Include="Assets\External\FontAwesome\less\stacked.less" />
+    <Content Include="Assets\External\FontAwesome\less\variables.less" />
+    <Content Include="Assets\External\FontAwesome\scss\font-awesome.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_animated.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_bordered-pulled.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_core.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_fixed-width.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_icons.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_larger.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_list.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_mixins.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_path.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_rotated-flipped.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_stacked.scss" />
+    <Content Include="Assets\External\FontAwesome\scss\_variables.scss" />
+    <Content Include="Assets\External\jQuery\jquery-3.6.0.min.map" />
+    <Content Include="Assets\External\jQuery\jquery-3.6.0.slim.min.map" />
+    <Content Include="Assets\External\jQuery\jquery.validate.unobtrusive.bootstrap.min.js.map" />
+    <Content Include="Assets\External\Plugins\CodeMirror\LICENSE" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\coffeescript\LICENSE" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\pascal\LICENSE" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\perl\LICENSE" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\ruby\LICENSE" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\r\LICENSE" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\sieve\LICENSE" />
+    <Content Include="Assets\External\Plugins\CodeMirror\mode\xquery\LICENSE" />
+    <Content Include="Assets\External\Plugins\CodeMirror\package.json" />
+    <Content Include="Assets\External\Plugins\SummerNote\font\summernote.eot" />
+    <Content Include="Assets\External\Plugins\SummerNote\font\summernote.ttf" />
+    <Content Include="Assets\External\Plugins\SummerNote\font\summernote.woff" />
+    <Content Include="Assets\External\Plugins\SummerNote\font\summernote.woff2" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-bs4.js.map" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-bs4.min.js.map" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-lite.js.map" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote-lite.min.js.map" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote.js.map" />
+    <Content Include="Assets\External\Plugins\SummerNote\summernote.min.js.map" />
+    <Content Include="Assets\External\Plugins\Toastr\Styles\toastr.less" />
+    <Content Include="Assets\External\Plugins\Toastr\Styles\toastr.scss" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\External\DataTables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>31519</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44328/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

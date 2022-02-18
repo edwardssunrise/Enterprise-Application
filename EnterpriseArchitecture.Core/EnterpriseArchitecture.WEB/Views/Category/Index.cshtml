@@ -1,0 +1,218 @@
+﻿@{
+    ViewBag.Title = "Category Page";
+}
+
+@section styles{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+}
+
+@section scripts{
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+}
+
+<div class="row" style="margin-left: 10px; margin-top: 20px;">
+    <div class="col-lg-12">
+        <div class="portlet card-shadow">
+            <div class="portlet-title">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="caption caption-red" style="margin-top: 5px">
+                            <i class="fa fa-list"></i>
+                            <span class="caption-subject"> Category Actions </span>
+                        </div>   
+                    </div>
+                        
+                    <div class="col-md-4">
+                        <div class="d-grid gap-2">
+                            <a href="javascript:FUNCTION_CreateCategory();" class="btn btn-warning btn-sm">
+                                <i class="fa fa-plus"></i> Create
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="form-inline">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 120px;">Name</span>
+                        </div>
+                        <input id="inputCategoryId" type="text" class="form-control" style="display:none" />
+                        <input id="inputCategoryName" type="text" class="form-control" placeholder="Category Name" style="width: 100px !important;" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 120px;">Color</span>
+                        </div>
+
+                        <input id="inputColor" type="color" class="form-control" style="height: 33px !important; width: 100px !important;" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 120px;">Icon Extension</span>
+                        </div>
+                        <input id="inputIcon" type="text" class="form-control" placeholder="Icon Extension" style="width: 100px !important;" />
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <a href="javascript:FUNCTION_SaveCategory();" class="btn btn-success btn-sm">
+                            <i class="fa fa-check"></i> Save
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="col-lg-12" style="margin-top: 20px;">
+        <div class="portlet card-shadow" style="height: 375px !important;">
+            <div class="portlet-title" style="border: none !important; min-height: 25px;">
+                <div class="caption caption-red">
+                    <i class="fa fa-list"></i>
+                    <span class="caption-subject"> Categories </span>
+                </div>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <table id="example" class="cell-border hover @*table table-striped custab*@" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Actions</th>
+                            <th>Name</th>
+                            <th>Color</th>
+                            <th>Icon</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbodyCategoryList">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    <a href="javascript:FUNCTION_GetCategoryByCategoryID(@item.ID)" class="btn btn-primary">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+
+                                    <a href="javascript:FUNCTION_IsDelete(@item.ID)" class="btn btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                                <td>@item.Name</td>
+                                <td>@item.Color</td>
+                                <td>@item.Icon</td>
+                                    
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section onloadMethods{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+}
+
+@section defineMethods{
+    <script>
+        function FUNCTION_CreateCategory() {
+            $("#inputCategoryId").val(0)
+            $("#inputCategoryName").val("");
+            $("#inputColor").val("#fff");
+            $("#inputIcon").val("");
+        }
+
+        function FUNCTION_SaveCategory() {
+            var url = "";
+
+            if ($("#inputCategoryId").val() == 0) {
+                url = "/Admin/Category/Insert";
+            }
+            else {
+                url = "/Admin/Category/Update/";
+            }
+
+            var data = {
+                ID: $("#inputCategoryId").val(),
+                Name: $("#inputCategoryName").val(),
+                Color: $("#inputColor").val(),
+                Icon: $("#inputIcon").val(),
+            };
+
+            $.ajax({
+                url: url,
+                type: "post",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                success: function (e) {
+                    if (e == true) {
+                        ShowMessage("success", "Congratulations", "The changes have been successfully applied.");
+                        window.location.reload();
+                    }
+
+                }
+            });
+        }
+
+        function FUNCTION_GetCategoryByCategoryID(e) {
+            $.ajax({
+                url: "/Admin/Category/GetCategoryDetailByCategoryID?categoryID=" + e,
+                type: "get",
+                success: function (e) {
+                    $("#inputCategoryId").val(e.ID)
+                    $("#inputCategoryName").val(e.Name)
+                    $("#inputColor").val(e.Color)
+                    $("#inputIcon").val(e.Icon)
+                }
+            });
+        }
+
+        function FUNCTION_DeleteCategory(isOkey) {
+            if (isOkey == true) {
+                $.ajax({
+                    url: "/Admin/Category/Delete",
+                    type: "post",
+                    data: { ID: $("#inputCategoryId").val() },
+                    success: function (e) {
+                        if (e == true) {
+                            ShowMessage("success", "Congratulations", "The changes have been successfully applied.");
+                            window.location.reload();
+                        } else {
+                            ShowMessage("info", "Information", "There are articles in this category.<br/>You must <b>delete</b> the articles before deleting the category.");
+                        }
+                    }
+                });
+            }
+        }
+
+        function FUNCTION_IsDelete(e) {
+            $("#inputCategoryId").val(e);
+
+            if ($("#inputCategoryId").val() != "0") {
+                var html = `<div class="actions">
+                                <a href="javascript:FUNCTION_DeleteCategory(true);" class="btn btn-success" style="border: none !important;">
+                                    <i class="fa fa-check"></i> Yes
+                                </a>
+
+                                <a href="javascript:FUNCTION_DeleteCategory(false);" class="btn btn-secondary" style="border: none !important;">
+                                    <i class="fa fa-times"></i> Cancel
+                                </a>
+                            </div>`;
+
+                ShowMessage("error", "Information", "Are you sure you want to delete this record?<br/>" + html);
+            }
+            else {
+                ShowMessage("warning", "Warning", "No article has been selected to be deleted!");
+            }
+
+        }
+    </script>
+}

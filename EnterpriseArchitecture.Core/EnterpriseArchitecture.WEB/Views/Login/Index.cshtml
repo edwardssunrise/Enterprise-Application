@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@section styles
+{
+    <link href="~/Assets/Internal/Custom/Styles/Login.css" rel="stylesheet" />
+}
+
+@if (Session["SessionContext"] != null)
+{
+    Response.Redirect("/Profile");
+}
+
+<div class="card card-container">
+    <img id="profile-img" class="profile-img-card" src="~/Assets/Internal/Images/avatar.png" />
+
+    <p id="profile-name" class="profile-name-card"></p>
+
+    <form class="form-signin">
+        <span id="reauth-email" class="reauth-email"></span>
+
+        <input type="text" id="inputUserName" class="form-control" placeholder="User Name" required autofocus>
+
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <div id="remember" class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block btn-signin" onclick="_LoginControl()" type="button"><i class="fa fa-sign-in" style="font-size: 15px;"></i> Sign in</button>
+    </form>
+
+    <a href="#" class="forgot-password">
+        Forgot the password?
+    </a>
+</div>
+
+@section scripts
+{
+    <script src="/Assets/External/Plugins/Toastr/Scripts/toastr.js"></script>
+    <script src="/Assets/Internal/Custom/Scripts/Utility.js"></script>
+
+    <script>
+        $("body").on("keydown", function (e) {
+            if (e.keyCode == 13) {
+                _LoginControl();
+            }
+        });
+
+        function _LoginControl() {
+            var model = { UserName: $("#inputUserName").val(), Password: $("#inputPassword").val() };
+
+            if (model.UserName.trim() != "" && model.Password.trim() != "") {
+                $.ajax({
+                    url: "/Admin/Login/LoginControl",
+                    type: "POST",
+                    data: model,
+                    success: function (e) {
+                        if (e == "") {
+                            ShowMessage("error", "Login Error", "Incorrect username or password entered!")
+                        }
+                        else {
+                            window.location = e;
+                            ShowMessage("success", "Login Successful", "You have successfully logged into the web application!")
+                        }
+                    }
+                });
+            }
+            else {
+                ShowMessage("warning", "Login Error", "Please enter username and password!")
+            }
+        }
+    </script>
+}

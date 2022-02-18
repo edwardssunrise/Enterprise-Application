@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Profile Page";
+}
+
+@model List<EnterpriseArchitecture.DTO.EEntity.EPostUserDTO>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-5 lib-item" style="margin-right:20px;">
+        <div class="lib-panel">
+            <div class="row box-shadow">
+                <div class="col-md-6">
+                    <img class="lib-img-show" src="@item.PostImageURL" style="height:190px;">
+                </div>
+                <div class="col-md-6">
+                    <div class="lib-row lib-header">
+                        <a href="/@EnterpriseArchitecture.Utilities.StringOperations.StringManager.ToSlug(item.CategoryName)-@item.CategoryID/@item.Slug">
+                            @item.Title
+                        </a>
+                        <div class="lib-header-seperator"></div>
+                    </div>
+
+                    <div class="lib-row lib-desc">
+                        @item.ShortDescription
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (((List<EnterpriseArchitecture.DTO.EEntity.EPostUserDTO>)Session["IsEmpty"]).Count == 0)
+{
+    @section styles{
+        #btnPostMore {
+            display: none;
+        }
+    }
+}

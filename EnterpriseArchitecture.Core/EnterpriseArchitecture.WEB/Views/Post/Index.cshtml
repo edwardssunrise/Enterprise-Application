@@ -1,0 +1,448 @@
+﻿@model List<EnterpriseArchitecture.DTO.EEntity.EGetPostsByUserIdDTO>
+
+@section pageTitle{Article Operations}
+
+@{
+    ViewBag.Title = "Article Page";
+}
+
+@section styles{
+    <link href="~/Assets/Internal/Custom/Styles/Post.css" rel="stylesheet" />
+    <link href="~/Assets/External/Plugins/CodeMirror/theme/monokai.css" rel="stylesheet" />
+    <link href="~/Assets/External/Plugins/CodeMirror/lib/codemirror.css" rel="stylesheet" />
+    <link href="~/Assets/External/Plugins/SummerNote/summernote.css" rel="stylesheet" />
+}
+
+<div class="row" style="margin: 10px;">
+
+    <div id="left-container" class="col-lg-5" style="padding-left: 0px !important; padding-right: 0px !important;">
+        <div class="portlet card-shadow">
+            <div class="portlet-title">
+                <div class="caption caption-red">
+                    <i class="fa fa-list"></i>
+                    <span class="caption-subject"> Article List</span>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6 d-grid gap-2" style="margin-top: 0px; margin-bottom: 15px;">
+                    <button onclick="FUNCTION_CreatePost()" class="btn btn-primary btn-sm">
+                        <i class="fa fa-plus"></i> Create Article
+                    </button>
+                </div>
+
+                <div class="col-md-6 d-grid gap-2" style="margin-top: 0px; margin-bottom: 15px;">
+                    <button onclick="FUNCTION_ReloadPostToTable(0)" class="btn btn-primary btn-sm">
+                        <i class="fa fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+
+            <div class="portlet-body">
+
+                <div class="input-group" style="margin-bottom: 17px;">
+                    <input id="inputFilterTitle" type="text" class="form-control" placeholder="Enter the article title." style="height: 38px;" />
+                    <select id="selectFilterCategory" class="form-control"></select>
+                </div>
+
+                <table class="table table-striped custab">
+                    <thead class="table-title">
+                        <tr>
+                            <th>Title</th>
+                            <th class="text-center"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbodyPostList" class="table-rows">
+                        @foreach (var item in Model)
+                        {
+                            string eh = item.IsActive == true ? "Yes" : "No";
+                            <tr id="tr-@item.PostID">
+                                <td class="text-center">
+                                    <a href="javascript:FUNCTION_GetPostDetailByPostID(@item.PostID)" class="@*btn btn-primary*@">
+                                        <i class="fa fa-edit" style="font-size: 15px !important; padding: 0px !important; margin: 0px !important;"></i>
+                                    </a>
+                                </td>
+
+                                <td>@item.Title</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-inline table-bottom" style="text-align: center; margin-top: 18px;">
+                <a href="javascript:FUNCTION_GetPostByParams($('#inputPageNumber').val(pageNumber != 1 ? pageNumber=pageNumber -1 : pageNumber=1),'os');" class="btn btn-primary pull-left" style="margin-left: 13px;">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+
+                <input id="inputPageNumber" onkeyup="FUNCTION_GetPostByParams($('#inputPageNumber').val(this.value),'i')" value="1" class="form-control" style="width: auto; text-align: center !important;" placeholder="Page Number" />
+
+                <a href="javascript:FUNCTION_GetPostByParams($('#inputPageNumber').val(postCount!=pageNumber ? pageNumber=pageNumber +1 : pageNumber=postCount ),'os');" class="btn btn-primary pull-right" style="margin-right: 13px;">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="right-container" class="col-lg-7" style="padding-left: 10px !important; padding-right: 0px !important;">
+        <div class="portlet card-shadow">
+            <div class="portlet-title">
+                <div class="caption caption-red">
+                    <i class="fa fa-cog"></i>
+                    <span class="caption-subject"> Article Operations</span>
+                </div>
+
+                <div class="actions">
+                    <a onclick="FUNCTION_ChangeToggleMenu()" id="toggleMenuButton" class="btn btn-danger" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fa fa-eye-slash"></i> Hide
+                    </a>
+
+                    <a href="javascript:FUNCTION_SavePost();" class="btn btn-primary">
+                        <i class="fa fa-check"></i> Save
+                    </a>
+                    <a href="javascript:FUNCTION_IsOkeyForDelete();" class="btn btn-primary">
+                        <i class="fa fa-trash"></i> Erase
+                    </a>
+                </div>
+            </div>
+
+            <input id="inputPostID" type="text" class="form-control" style="display:none;" value="0" />
+
+            <div class="collapse show" id="collapseExample">
+                <div class="portlet-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 120px;">Is Publish</span>
+                        </div>
+
+                        <input id="inputIsActive" type="checkbox" name="checkbox" class="form-control" placeholder="Press Me!" aria-label="Username" aria-describedby="basic-addon1">
+
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="isPublishResult">No</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 120px;">Title</span>
+                        </div>
+                        <input id="inputTitle" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 120px;">Slug</span>
+                        </div>
+                        <input id="inputSlug" type="text" class="form-control" disabled placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 120px;">Description</span>
+                        </div>
+                        <input id="inputShortDescription" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="width: 120px;">Image</span>
+                        </div>
+
+                        <input class="form-control" id="fileSelect" type="file" accept="image/*" onchange="FUNCTION_ChangeImage(this)" @*style="display:none;"*@ />
+
+                        <div class="input-group-append">
+                            <button onclick="$('#fileSelect').click()" type="button" class="btn btn-outline-secondary">Select Image</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 120px;">Select Category</span>
+                        </div>
+                        <select id="selectCategory" class="form-control"></select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 120px;">Date</span>
+                        </div>
+                        <input id="inputDate" type="datetime-local" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Content</label>
+                        <div id="summernote" class="summernote"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Assets/External/Plugins/CodeMirror/lib/codemirror.js"></script>
+    <script src="~/Assets/External/Plugins/CodeMirror/mode/xml/xml.js"></script>
+    <script src="~/Assets/External/Plugins/CodeMirror/lib/util/formatting.js"></script>
+    <script src="~/Assets/External/Plugins/SummerNote/summernote.js" defer></script>
+}
+
+@section onloadMethods{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.summernote').summernote({
+                height: 95,
+                codemirror: {
+                    theme: 'monakai'
+                }
+            });
+        });
+    </script>
+}
+
+@section defineMethods{
+    <script type="text/javascript">
+
+        function FUNCTION_ChangeToggleMenu() {
+
+            if ($('#toggleMenuButton').text().trim() == 'Hide') {
+                $('#toggleMenuButton').removeClass('btn-danger');
+                $('#toggleMenuButton').addClass('btn-success');
+
+                $('#toggleMenuButton').html('<i class="fa fa-eye"></i> Show');
+            }
+            else {
+                $('#toggleMenuButton').removeClass('btn-success');
+                $('#toggleMenuButton').addClass('btn-danger');
+
+                $('#toggleMenuButton').html('<i class="fa fa-eye-slash"></i> Hide');
+            }
+        }
+
+        function FUNCTION_SavePost() {
+            var url = "";
+
+            if ($("#inputPostID").val() == 0) {
+                url = "/Admin/Post/Insert";
+            }
+            else {
+                url = "/Admin/Post/Update";
+            }
+
+            var data = {
+                ID: $("#inputPostID").val(),
+                Title: $("#inputTitle").val(),
+                ShortDescription: $("#inputShortDescription").val(),
+                CategoryID: $("#selectCategory").val(),
+                ModifiedOn: $("#inputDate").val(),
+                PostContent: $("#summernote").summernote("code"),
+                IsActive: $("#inputIsActive")[0].checked
+            };
+
+            if ($("#inputTitle").val() != "" && $("#inputShortDescription").val() != "" && $($("#summernote").summernote("code")).text() != "") {
+                if ($("#selectCategory").val() != "0" && $("#inputDate").val() != "") {
+                    $.ajax({
+                        url: url,
+                        type: "post",
+                        data: JSON.stringify(data),
+                        contentType: "application/json; charset=utf-8",
+                        success: function (e) {
+                            if (e == true) {
+                                FUNCTION_ReloadPostToTable(0);
+                                ShowMessage("success", "Successful", "The changes were made successfully.");
+                            }
+                        }
+                    });
+                } else {
+                    ShowMessage("warning", "Warning", "Please select a category or enter a date!");
+                }
+            } else {
+                ShowMessage("warning", "Warning", "Please enter title, short description or content");
+            }
+        }
+
+        function FUNCTION_DeletePost(isOkey) {
+            if (isOkey == true) {
+                $.ajax({
+                    url: "/Admin/Post/Delete",
+                    type: "post",
+                    data: { ID: $("#inputPostID").val() },
+                    success: function (e) {
+                        if (e == true) {
+                            $("#tr-" + $("#inputPostID").val()).remove();
+                            FUNCTION_CreatePost();
+                            ShowMessage("success", "Succcessful", "Deregistration was successful.");
+                        }
+                    }
+                });
+            }
+
+        }
+
+        function FUNCTION_IsOkeyForDelete() {
+            if ($("#inputPostID").val() != "0") {
+                var html = ` <div class="actions">
+                                <a href="javascript:FUNCTION_DeletePost(true);" class="btn btn-red btn-circle active">
+                                    <i class="fa fa-check"></i> Yes
+                                </a>
+
+                                <a href="javascript:FUNCTION_DeletePost(false);" class="btn btn-red btn-circle active">
+                                    <i class="fa fa-times"></i> Cancel
+                                </a>
+                            </div>`
+
+                ShowMessage("info", "Information", "Are you sure you want to delete this record?<br/>" + html);
+            } else {
+                ShowMessage("warning", "Warning", "No article has been selected to be deleted!");
+            }
+
+        }
+
+        function FUNCTION_GetPostDetailByPostID(e) {
+            $.ajax({
+                url: "/Admin/Post/GetPostDetailByPostID?postId=" + e,
+                type: "get",
+                success: function (e) {
+                    $("#inputPostID").val(e.ID);
+                    $("#inputTitle").val(e.Title);
+                    $("#inputSlug").val(e.Slug);
+                    $("#imgPost").attr("src", e.ImageUrl);
+                    $("#inputShortDescription").val(e.ShortDescription);
+                    $("#selectCategory").val(e.CategoryID);
+                    $("#inputDate")[0].value = e.ModifiedOnString;
+                    $("#inputIsActive")[0].checked = e.IsActive;
+                    $("#summernote").summernote("code", e.PostContent);
+                }
+            });
+        }
+
+        function FUNCTION_GetCategories() {
+            $.ajax({
+                url: "/Category/GetCategories",
+                type: "get",
+                success: function (e) {
+                    $("#selectCategory").append("<option value=" + 0 + ">Select Category</option>")
+
+                    $("#selectFilterCategory").append("<option value=" + 0 + ">Select Category</option>")
+
+                    for (var i = 0; i < e.length; i++) {
+                        $("#selectCategory").append("<option value=" + e[i].ID + ">" + e[i].Name + "</option>")
+                        $("#selectFilterCategory").append("<option value=" + e[i].ID + ">" + e[i].Name + "</option>")
+                    }
+                }
+            });
+        }
+
+        function FUNCTION_CreatePost() {
+            $("#inputPostID").val(0);
+            $("#inputTitle").val("");
+            $("#inputSlug").val("");
+            $("#inputShortDescription").val("");
+            $("#selectCategory").val(0);
+            $("#inputDate")[0].value = "";
+            $(".summernote").summernote('code', '');
+            $("#inputIsActive")[0].checked = false;
+        }
+
+        function FUNCTION_ReloadPostToTable(_pageNumber) {
+            var categoryId = null;
+            var title = null;
+
+            categoryId = $("#selectFilterCategory").val() != "0" ? $("#selectFilterCategory").val() : null;
+            title = $("#inputFilterTitle").val() != "" ? $("#inputFilterTitle").val() : null;
+
+            $.ajax({
+                url: "/Admin/Post/GetPostsByFilterParams?pageNumber=" + _pageNumber + "&title=" + title + "&categoryID=" + categoryId,
+                type: "get",
+                success: function (e) {
+                    var html = "";
+
+                    for (var i = 0; i < e.length; i++) {
+                        var eh = e[i].IsActive == true ? "Yes" : "No";
+                        html += `<tr id="tr-' ${e[i].ID} '">
+                                    <td class="text-center">
+                                        <a href="javascript:FUNCTION_GetPostDetailByPostID(' ${e[i].PostID} ')" class="">
+                                            <i class="fa fa-edit" ></i >
+                                        </a >
+                                    </td >
+
+                                    <td>${e[i].Title}</td>
+                                </tr >`;
+                    }
+
+                    if (html == "") {
+                        html += `<tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>No record found to load.</td>
+                                    <td</td>
+                                </tr>`;
+                    }
+
+                    $("#tbodyPostList").html(html);
+                }
+            });
+        }
+
+        function FUNCTION_GetPostByParams(_inputPageNumber, e) {
+            if (_inputPageNumber.val() != "") {
+                FUNCTION_ReloadPostToTable(_inputPageNumber.val() - 1);
+
+                if (e == "i") {
+                    pageNumber = parseInt(_inputPageNumber.val());
+                }
+            }
+        }
+
+        function FUNCTION_GetPostCount() {
+            $.ajax({
+                url: "/Admin/Post/GetPostCount",
+                type: "get",
+                success: function (e) {
+                    postCount = e;
+                }
+            });
+        }
+
+        function FUNCTION_ChangeImage(e) {
+            var data = new FormData();
+            data.append("ImageFormData", e.files[0]);
+            $.ajax({
+                url: "/Profile/TemporaryImage",
+                type: "post",
+                data: data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (e) {
+                    $("#imgProfile").attr("src", "/Profile/TemporaryImageShow");
+                }
+            })
+        }
+    </script>
+}
+
+@section runScripts{
+    <script type="text/javascript">
+        var pageNumber = 1;
+        var postCount = 0;
+
+        FUNCTION_GetCategories();
+        FUNCTION_GetPostCount();
+
+        var checkbox = document.getElementById("inputIsActive");
+
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                console.log("Yes");
+                document.getElementById("isPublishResult").innerHTML = "Yes";
+            } else {
+                document.getElementById("isPublishResult").textContent = "No";
+                console.log("No");
+            }
+        });
+    </script>
+}

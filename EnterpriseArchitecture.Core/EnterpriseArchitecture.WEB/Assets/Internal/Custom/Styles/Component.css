@@ -1,0 +1,357 @@
+﻿* {
+ font-size: 14px !important;
+}
+.tabbable-panel {
+    padding: 10px;
+}
+.tabbable-line > .nav-tabs {
+    border: none;
+    margin: 0px;
+}
+
+.tabbable-line > .nav-tabs > li {
+    margin-right: 2px;
+}
+
+.tabbable-line > .nav-tabs > li > a {
+    border: 0;
+    margin-right: 0;
+    color: #737373;
+}
+
+.tabbable-line > .nav-tabs > li > a > i {
+    color: #a6a6a6;
+}
+
+.tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+    border-bottom: 4px solid #fbcdcf;
+}
+
+.tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+    border: 0;
+    background: none !important;
+    color: #333333;
+}
+
+.tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i {
+    color: #a6a6a6;
+}
+
+.tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {
+    margin-top: 0px;
+}
+
+.tabbable-line > .nav-tabs > li.active {
+    border-bottom: 4px solid #f3565d;
+    position: relative;
+}
+
+.tabbable-line > .nav-tabs > li.active > a {
+    border: 0;
+    color: #333333;
+}
+
+.tabbable-line > .nav-tabs > li.active > a > i {
+    color: #404040;
+}
+
+.tabbable-line > .tab-content {
+    margin-top: -3px;
+    background-color: #fff;
+    border: 0;
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.portlet .tabbable-line > .tab-content {
+    padding-bottom: 0;
+}
+
+
+.tabbable-line.tabs-below > .nav-tabs > li {
+    border-top: 4px solid transparent;
+}
+
+.tabbable-line.tabs-below > .nav-tabs > li > a {
+    margin-top: 0;
+}
+
+.tabbable-line.tabs-below > .nav-tabs > li:hover {
+    border-bottom: 0;
+    border-top: 4px solid #fbcdcf;
+}
+
+.tabbable-line.tabs-below > .nav-tabs > li.active {
+    margin-bottom: -2px;
+    border-bottom: 0;
+    border-top: 4px solid #f3565d;
+}
+
+.tabbable-line.tabs-below > .tab-content {
+    margin-top: -10px;
+    border-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.card-shadow {
+	border: 2px solid #F1F1F1;
+}
+
+.note-editable {
+    background-color: #fff;
+}
+
+.custab {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 1% 0;
+    transition: 0.5s;
+}
+
+.custab:hover {
+    transition: 0.5s;
+}
+
+.content {
+    padding: 30px;
+    background: #f1f3fa;
+}
+
+.margin-bottom-30 {
+    margin-bottom: 30px;
+}
+
+.portlet {
+    background: #fff;
+    padding: 10px 10px;
+}
+
+.portlet.portlet-gray {
+    background: #f7f7f7;
+}
+
+.portlet.portlet-bordered {
+    border: 1px solid #eee;
+}
+
+.portlet-title {
+    padding: 0;
+    min-height: 40px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 18px;
+}
+
+.caption {
+    float: left;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.caption.caption-green .caption-subject,
+.caption.caption-green i {
+    color: black;
+    font-weight: 200;
+}
+
+.caption.caption-red .caption-subject,
+.caption.caption-red i {
+    color: black;
+    font-weight: 200;
+}
+
+.caption.caption-purple .caption-subject,
+.caption.caption-purple i {
+    color: #8775a7;
+    font-weight: 400;
+}
+
+.caption i {
+    color: #777;
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: 3px;
+}
+
+.caption-subject {
+    color: #666;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.caption-helper {
+    padding: 0;
+    margin: 0;
+    line-height: 13px;
+    color: #9eacb4;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.actions {
+    float: right;
+    display: inline-block;
+}
+
+.actions a {
+    margin-left: 3px;
+}
+
+.actions .btn {
+    padding: 3px 9px;
+    font-size: 13px;
+    line-height: 1.5;
+    border-color: #ccc;
+    border-radius: 5px;
+}
+
+.actions .btn i {
+    font-size: 12px;
+}
+
+.actions .btn:hover {
+}
+
+.pagination {
+    margin: -3px 0 0;
+    border-radius: 50px;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #8775a7;
+    background: #f7f7f7;
+}
+
+.pagination > li:hover > a,
+.pagination > li.active > a,
+.pagination > li.active:hover > a {
+    color: #fff;
+    background: #8775a7;
+    border-color: #8775a7;
+}
+
+.inputs {
+    float: right;
+    display: inline-block;
+    padding: 4px 0;
+    margin-top: -10px;
+}
+
+.input-inline {
+    width: 240px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.portlet-title > .nav-tabs {
+    background: none;
+    margin: 0;
+    float: right;
+    display: inline-block;
+    border: 0;
+}
+
+.portlet-title > .nav-tabs > li {
+    background: none;
+    margin: 0;
+    border: 0;
+}
+
+.portlet-title > .nav-tabs > li > a {
+    background: none;
+    border: 0;
+    padding: 2px 10px 13px;
+    color: #444;
+}
+
+.portlet-title > .nav-tabs > li.active,
+.portlet-title > .nav-tabs > li.active:hover {
+    border-bottom: 4px solid #f3565d;
+    position: relative;
+}
+
+.portlet-title > .nav-tabs > li:hover {
+    border-bottom: 4px solid #f29b9f;
+}
+
+.portlet-title > .nav-tabs > li.active > a,
+.portlet-title > .nav-tabs > li:hover > a {
+    color: #333;
+    background: #fff;
+    border: 0;
+}
+
+.actions .btn.btn-circle i {
+    font-size: 11px;
+}
+
+.actions .btn.btn-circle {
+    height: 28px;
+    padding: 3px 7px;
+    text-align: center;
+}
+ 
+.actions .btn.grey-salsa {
+    border: none;
+    margin-left: 3px;
+    box-shadow: none;
+    border-radius: 50px !important;
+}
+
+.actions .btn.grey-salsa.active {
+    color: #fafcfb;
+    background: #8e9bae;
+}
+
+.actions .grey-salsa.btn:hover,
+.actions .grey-salsa.btn:focus,
+.actions .grey-salsa.btn:active,
+.actions .grey-salsa.btn.active {
+    color: #fafcfb;
+    background: #97a3b4;
+}
+
+.actions .btn.btn-red.active,
+.actions .btn.btn-red {
+    color: #fff;
+    box-shadow: none;
+    background: #0A58CA;
+    border-color: #0a58aa; 
+}
+
+.actions .btn.btn-purple.active,
+.actions .btn.btn-purple:hover {
+    color: #fff;
+    box-shadow: none;
+    background: #8775a7;
+    border-color: #8775a7;
+}
+.table-bottom .btn
+{
+    color:#fff;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-inline .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+
+.dataTables_filter {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,21 @@
+﻿#portlet-toggle-button{
+    margin-bottom: 15px;
+    color: white;
+}
+
+#portlet-toggle-button:hover {
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+}
+
+.special-form-group{
+	margin-bottom: 10px;
+}
+
+.table-title th{
+    font-size: 12px !important;
+}
+
+.table-rows td {
+    font-size: 12px !important;
+}

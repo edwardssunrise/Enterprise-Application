@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "CategoryList";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@section styles{
+    body {
+    padding-top: 200px;
+    }
+}
+
+@section breadCrumb{
+    <div class="collapse navbar-collapse site-title">
+        <h1>@Model[0].CategoryName</h1>
+    </div>
+}
+
+@model List<EnterpriseArchitecture.DTO.EEntity.EPostUserDTO>
+
+<div id="postList" class="row row-margin-bottom">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-5 lib-item" style="margin-right:20px;">
+            <div class="lib-panel">
+                <div class="row box-shadow">
+                    <div class="col-md-6">
+                        <img class="lib-img-show" src="@item.PostImageURL" style="height:190px;">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="lib-row lib-header">
+                            <a href="/@EnterpriseArchitecture.Utilities.StringOperations.StringManager.ToSlug(item.CategoryName)/@item.Slug">
+                                @item.Title
+                            </a>
+
+                            <div class="lib-header-seperator"></div>
+                        </div>
+
+                        <div class="lib-row lib-desc">
+                            @item.ShortDescription
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section scripts{
+    <script src="~/Assets/External/jQuery/jquery.validate.unobtrusive.bootstrap.js"></script>
+
+    @using (Ajax.BeginForm("PostMore", "Site", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "postList", InsertionMode = InsertionMode.InsertAfter }))
+    {
+        <input id="btnPostMore" type="submit" class="btn btn-default" value="Show More" style="width: 100%;" />
+    }
+
+    @if(((List<EnterpriseArchitecture.DTO.EEntity.EPostUserDTO>)Session["IsEmpty"]).Count == 0)
+    {
+        <style>
+            #btnPostMore {
+                display: none;
+            }
+        </style>
+    }
+}

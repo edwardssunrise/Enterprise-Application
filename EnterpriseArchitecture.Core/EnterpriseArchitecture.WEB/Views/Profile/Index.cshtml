@@ -1,0 +1,232 @@
+﻿@using EnterpriseArchitecture.Utilities.SessionOperations
+
+@model EnterpriseArchitecture.DTO.EEntity.EUserDTO
+
+@{
+    ViewBag.Title = "Profile Page";
+}
+
+@section pageTitle{Profile Operations}
+
+@{
+    var FullName = ((SessionContext)Session["SessionContext"]).FullName;
+    var Job = ((SessionContext)Session["SessionContext"]).Job;
+    var ImageURL = ((SessionContext)Session["SessionContext"]).ImageURL;
+}
+
+<div class="row profile profile-page-style">
+    <div class="col-md-3">
+        <div class="profile-sidebar">
+
+            <div class="profile-userpic">
+                <img src="@ImageURL" class="img-responsive" alt="">
+            </div>
+
+            <div class="profile-usertitle">
+                <div class="profile-usertitle-name">
+                    @FullName
+                </div>
+                <div class="profile-usertitle-job">
+                    @Job
+                </div>
+            </div>
+
+            <div class="profile-userbuttons">
+                <button onclick="FUNCTION_FollowControl()" type="button" class="btn btn-outline-primary btn-sm profile-button-styles">Follow</button>
+                <button onclick="FUNCTION_Message()" type="button" class="btn btn-outline-danger btn-sm">Message</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="tabbable-panel">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="true">Information</button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password" type="button" role="tab" aria-controls="password" aria-selected="false">Reset Password</button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image" type="button" role="tab" aria-controls="image" aria-selected="false">Change Image</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+                    <form role="form">
+                        <div class="mb-3">
+                            <label for="profileFullName" class="form-label">Full Name</label>
+                            <input value="@Model.FullName" type="text" class="form-control" id="profileFullName" aria-describedby="profileFullNameInput" placeholder="Please enter your full name...">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="profileJob" class="form-label">Job</label>
+                            <input value="@Model.Job" type="text" class="form-control" id="profileJob" placeholder="Please enter your job..." aria-describedby="profileJobInput">
+                            <div id="specialNotification" class="form-text">The information you enter into the web application is under the guarantee of the service.</div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <a href="javascript:FUNCTION_UpdateByFullname()" class="btn btn-primary">Save</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+                    <form role="form">
+                        <div class="mb-3">
+                            <label for="profileUserName" class="form-label">User Name</label>
+                            <input value="@Model.UserName" type="text" class="form-control" id="profileUserName" aria-describedby="profileUserNameInput" placeholder="Please enter your user name...">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="profilePassword" class="form-label">Password</label>
+                            <input value="@Model.Password" type="password" class="form-control" id="profilePassword" placeholder="Please enter password..." aria-describedby="profilePasswordInput">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="profilePasswordRepeat" class="form-label">Password Repeat</label>
+                            <input value="@Model.Password" type="password" class="form-control" id="profilePasswordRepeat" placeholder="Please re-enter your new password..." aria-describedby="profilePasswordRepeatInput">
+                            <div id="specialNotification" class="form-text">The information you enter into the web application is under the guarantee of the service.</div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button onclick="FUNCTION_UpdateByUsername()" type="button" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
+                    <div class="thumbnail">
+                        <img id="profile-user-image" src="@ImageURL" class="rounded mx-auto d-block img-thumbnail" alt="" style="margin-top: 25px; max-width: 100px; height: auto;" />
+
+                        <div class="caption">
+                            <h3>Profile Image</h3>
+
+                            <p>Please use the controls below to change your profile picture.</p>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input id="file-select" type="file" accept="image/*" onchange="FUNCTION_ChangeImage(this)" hidden>
+                                    <a href="#" onclick="$('#file-select').click()" class="btn btn-primary profile-image-buttons" style="width: 100% !important;" role="button">Select Image</a>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <a href="#" onclick="FUNCTION_UpdateImage()" class="btn btn-success profile-image-buttons" style="width: 100% !important;" role="button">Update</a>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <a target="_blank" href="/Profile/TemporaryImageShow" class="btn btn-danger profile-image-buttons" style="width: 100% !important;" role="button">Preview</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+        function FUNCTION_FollowControl() {
+            ShowMessage("info", "Follow Button Notification", "No action has been assigned to this element yet!");
+        }
+
+        function FUNCTION_Message() {
+            ShowMessage("info", "Follow Button Notification", "No action has been assigned to this element yet!");
+        }
+
+        function FUNCTION_UpdateByFullname() {
+            if ($("#profileFullName").val().trim() != "" && $("#profileJob").val().trim() != "") {
+                var data = { WhichUpdate: "FJ", FullName: $("#profileFullName").val(), Job: $("#profileJob").val() };
+
+                $.ajax({
+                    url: "/Admin/Profile/Update",
+                    type: "post",
+                    data: data,
+                    success: function (e) {
+                        if (e == true) {
+                            ShowMessage("success", "Update Fullname And Job", "The changes were successfully implemented.");
+                        }
+                        else {
+                            ShowMessage("error", "Update Fullname And Job", "The full name and job fields could not be updated for unknown reason!");
+                        }
+                    }
+                });
+            }
+            else {
+                ShowMessage("warning", "Empty Fields", "Please do not leave the relevant fields blank!");
+                $("#toast-container").attr('style', 'opacity: 1 !important');
+            }
+        }
+
+        function FUNCTION_UpdateByUsername() {
+            if ($("#profileUserName").val().trim() != "" && $("#profilePassword").val().trim() != "") {
+                if ($("#profilePassword").val().trim() == $("#profilePasswordRepeat").val().trim()) {
+                    var data = { WhichUpdate: "UP", UserName: $("#profileUserName").val(), Password: $("#profilePassword").val() };
+
+                    $.ajax({
+                        url: "/Admin/Profile/Update",
+                        type: "post",
+                        data: data,
+                        success: function (e) {
+                            if (e == true) {
+                                ShowMessage("success", "Update User Name And Password", "The changes were successfully implemented.");
+                            }
+                            else {
+                                ShowMessage("error", "Update User Name And Password", "User name and user password could not be updated for unknown reason!");
+                            }
+                        }
+                    });
+                }
+                else {
+                    ShowMessage("info", "Different Passwords", "Password fields do not match!");
+                }
+            }
+            else {
+                ShowMessage("warning", "Empty Fields", "Please do not leave the relevant fields blank!");
+            }
+        }
+
+        function FUNCTION_ChangeImage(e) {
+            var data = new FormData();
+            data.append("ImageFormData", e.files[0]);
+
+            $.ajax({
+                url: "/Admin/Profile/TemporaryImage",
+                type: "post",
+                data: data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (e) {
+                    if (e == true) {
+                        $("#profile-user-image").attr("src", "/Profile/TemporaryImageShow");
+                    }
+                }
+            });
+        }
+
+        function FUNCTION_UpdateImage() {
+            $.ajax({
+                url: "/Admin/Profile/UserImageUpdate",
+                type: "post",
+                success: function (e) {
+                    if (e == true) {
+                        ShowMessage("success", "Image Update", "Profile picture updated successfully.");
+                        BlockingSleep(2000);
+                        location.reload();
+                    }
+                    else {
+                        ShowMessage("error", "Image Update", "An unknown error occurred while updating the profile picture!");
+                    }
+                }
+            })
+        }
+    </script>
+}
