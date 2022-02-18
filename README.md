@@ -25,12 +25,12 @@
 </div>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/86542016/154765655-5b20f479-c629-4ee1-b5f2-b73899203ced.png" widht="683" height="368">
-  <h4>1. Main Page</h4>
+  <img src="https://user-images.githubusercontent.com/86542016/154765655-5b20f479-c629-4ee1-b5f2-b73899203ced.png" widht="683" height="368"><br>
+  <span>1. Main Page</span><br>
   
-  <img src="https://user-images.githubusercontent.com/86542016/154765821-a91785f7-2322-41c3-a1e7-81b76bf5239b.png" widht="683" height="368">
-  <h4>2. Login Page</h4>
+  <img src="https://user-images.githubusercontent.com/86542016/154765821-a91785f7-2322-41c3-a1e7-81b76bf5239b.png" widht="683" height="368"><br>
+  <span>2. Login Page</span><br>
   
-  <img src="https://user-images.githubusercontent.com/86542016/154765855-16c3d112-85ab-46ce-b47c-4bbfaa9d4556.png" widht="683" height="368">
-  <h4>3. User Page</h4>
+  <img src="https://user-images.githubusercontent.com/86542016/154765855-16c3d112-85ab-46ce-b47c-4bbfaa9d4556.png" widht="683" height="368"><br>
+  <span>3. User Page</span><br>
 </div>
