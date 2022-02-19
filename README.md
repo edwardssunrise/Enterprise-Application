@@ -1,5 +1,5 @@
 <p align="center">     
-  <a href="">
+  <a href="https://github.com/sebetci/Enterprise-Application/issues">
     <img src="https://img.shields.io/github/issues/sebetci/Enterprise-Application.svg?style=flat" alt="GitHub Issues">
   </a>   
   
