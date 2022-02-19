@@ -4,7 +4,7 @@
   </a>   
   
   <a href="https://github.com/sebetci/Enterprise-Application/releases">
-    <img src="https://img.shields.io/github/release/sebetci/Enterprise-Application" alt="GitHub release">
+    <img src="https://img.shields.io/github/release/sebetci/Enterprise-Application.svg" alt="GitHub release">
   </a>
   
   <a href="https://github.com/sebetci/Enterprise-Application/blob/master/LICENSE">
